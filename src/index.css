@@ -1,0 +1,125 @@
+:root {
+  /* palette: botanical greenhouse */
+  --forest: #1f3d2f;
+  --forest-deep: #15271d;
+  --leaf: #5a8f5f;
+  --sage: #dbe6d8;
+  --paper: #f6f3ea;
+  --cream: #efe8d8;
+  --brass: #a8791d;
+  --brass-soft: #cfa64e;
+  --ink: #232a22;
+  --muted: #6b7366;
+  --line: rgba(35, 42, 34, 0.12);
+  --card: #fffdf8;
+
+  --shadow-sm: 0 1px 2px rgba(21, 39, 29, 0.06);
+  --shadow-md: 0 10px 30px rgba(21, 39, 29, 0.1);
+  --radius: 16px;
+
+  --display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.08;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: var(--body);
+  cursor: pointer;
+}
+
+/* shared button language */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.6rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--brass);
+  color: #fffef8;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: #946a16;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--forest);
+  border: 1.5px solid var(--forest);
+}
+
+.btn-ghost:hover {
+  background: var(--forest);
+  color: var(--paper);
+}
+
+.btn:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+/* focus visibility for keyboard users */
+:focus-visible {
+  outline: 2.5px solid var(--brass);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

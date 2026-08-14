@@ -1,49 +1,19 @@
+import { useState } from 'react'
+import LandingPage from './components/LandingPage'
+import ProductList from './components/ProductList'
+import CartPage from './components/CartPage'
+import './App.css'
 
-import React, { useState } from 'react';
-import ProductList from './ProductList';
-import './App.css';
-import AboutUs from './AboutUs';
-
-function App() {
-  
-  const [showProductList, setShowProductList] = useState(false);
-
-  const handleGetStartedClick = () => {
-    setShowProductList(true);
-  };
-
-  const handleHomeClick = () => {
-    setShowProductList(false);
-  };
+// No router in this project's dependencies, so navigation is a simple
+// state toggle between the three pages: landing -> products -> cart.
+export default function App() {
+  const [page, setPage] = useState('landing') // 'landing' | 'products' | 'cart'
 
   return (
-    <div className="app-container">
-      <div className={`landing-page ${showProductList ? 'fade-out' : ''}`}>
-        <div className="background-image"></div>
-        <div className="content">
-         <div className="landing_content">
-         <h1>Welcome To Paradise Nursery</h1>
-          <div className="divider"></div>
-          <p>Where Green Meets Serenity</p>
-         
-          <button className="get-started-button" onClick={handleGetStartedClick}>
-            Get Started
-          </button>
-         </div>
-          <div className="aboutus_container">
-          <AboutUs/>
-          </div>
-          </div>
-
-      </div>
-      <div className={`product-list-container ${showProductList ? 'visible' : ''}`}>
-        <ProductList onHomeClick={handleHomeClick}/>
-      </div>
+    <div className="app">
+      {page === 'landing' && <LandingPage onGetStarted={() => setPage('products')} />}
+      {page === 'products' && <ProductList onNavigate={setPage} />}
+      {page === 'cart' && <CartPage onNavigate={setPage} />}
     </div>
-  );
+  )
 }
-
-export default App;
-
-
-
