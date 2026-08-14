@@ -1,46 +1,28 @@
-# Paradise Nursery
+# e-plantShopping (Paradise Nursery)
 
-A front end shopping application for a fictional houseplant nursery, built with React, Vite, and Redux Toolkit.
+Front end shopping application for Paradise Nursery, a fictional houseplant store, built with React, Vite, and Redux Toolkit. Final project for the IBM React course.
 
 ## Pages
 
-1. **Landing page** with a background image, the company name, a short paragraph about the nursery, and a Get Started button that opens the product listing.
-2. **Product listing page** with 11 houseplants grouped into 4 categories. Each plant shows a thumbnail, name, price, and an Add to Cart button that disables once the plant is in the cart.
-3. **Shopping cart page** showing every plant added, its unit price and line total, increase and decrease buttons, and a delete button. It also shows the total number of plants, the total cost, a Continue Shopping button, and a Checkout button.
-
-The header on the product and cart pages shows a cart icon with a live item count and navigation between pages.
+1. Landing page with a background image, the company name, an About Us section, and a Get Started button that opens the product listing.
+2. Product listing page with plants grouped into categories. Each plant shows a thumbnail, name, description, and cost, plus an Add to Cart button that disables and reads "Added to Cart" once added. The header shows a cart icon with a live item count.
+3. Shopping cart page showing each plant with its unit cost, quantity, and line total, plus increase, decrease, and delete controls, the total cart amount, a Continue Shopping button, and a Checkout button.
 
 ## State management
 
-Cart state lives in a single Redux Toolkit slice at src/features/cart/cartSlice.js with three actions: addItem, removeItem, and updateQuantity. The header count, cart totals, and disabled Add to Cart buttons all read from that slice.
+Cart state lives in a Redux Toolkit slice in src/CartSlice.jsx with three reducers: addItem, removeItem, and updateQuantity. The store is configured in src/store.js and provided to the app in src/main.jsx.
 
 ## Running locally
 
     npm install
     npm run dev
 
-The dev server runs at http://localhost:5173.
-
-## Building
-
-    npm run build      # output goes to dist/
-    npm run preview    # preview the production build
+The dev server runs at http://localhost:5173/e-plantShopping/
 
 ## Deploying to GitHub Pages
 
-The base in vite.config.js must match your GitHub repository name, otherwise the assets will 404. It is currently set to /shoppingreact. If your repo has a different name, change that value first.
+The base in vite.config.js is set to /e-plantShopping/ to match the repository name.
 
     npm run deploy
 
-This runs the build and publishes dist/ to the gh-pages branch. In your repository settings, set Pages to serve from the gh-pages branch.
-
-## Project structure
-
-    src/
-      app/store.js                 Redux store
-      features/cart/cartSlice.js   cart reducer, actions, selectors
-      data/plants.js               plant catalog (categories + plants)
-      components/                  Header, LandingPage, ProductList, CartPage
-      assets/                      hero background and plant illustrations
-      App.jsx                      page switching
-      main.jsx                     entry, wraps App in the Redux Provider
+This builds the app and publishes dist/ to the gh-pages branch. Set Pages to serve from the gh-pages branch in the repository settings.
