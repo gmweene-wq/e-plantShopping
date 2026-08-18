@@ -25,6 +25,13 @@ function AboutUs() {
         Join us in our mission to create a greener, healthier world. Visit Paradise Nursery today and experience the 
         beauty of nature right at your doorstep.
       </p>
+
+      <footer className="about-us-footer">
+        <p>&copy; 2023 Paradise Nursery. All rights reserved.
+          <br>  
+          </br>
+        </p>
+      </footer>
     </div>
   );
 }
