@@ -1,147 +1,159 @@
-/* LandingPage.css */
+/* ============================================================
+   App.css — mobile-first
+   Covers: landing page, background image, page transition
+   ============================================================ */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
+/* ---------- Landing page shell ---------- */
 .landing-page {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: #f8f8f8;
+  overflow: hidden;
+  background-color: #1a1a1a;
 }
 
 .background-image {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-image: url('https://cdn.pixabay.com/photo/2017/07/13/08/59/greenhouse-2499758_1280.jpg');
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center;
-  filter: brightness(0.8);
+  filter: brightness(0.55);
 }
+
+/* ---------- Content overlay ---------- */
 .content {
+  position: relative;
+  z-index: 1;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
   height: 100vh;
-  width: 100vw;
- top: 100px;
-  backdrop-filter: blur(4px);
-  background-color: rgba(0,0,0,0.5);
-  gap: 20px;
+  padding: 0 24px;
+  gap: 0;
 }
 
+/* ---------- Left column text ---------- */
 .landing_content {
- margin-top: 430px;
-  margin-left: 100px;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  text-align: center;
-  /* background-color: red; */
-  width: 400px;
-  height: 400px;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-}
-
-.content p,
-.content h1 {
-  color: white;
+  gap: 16px;
+  width: 100%;
+  max-width: 480px;
 }
 
 .content h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
+  font-size: clamp(2rem, 10vw, 4rem);
+  color: #ffffff;
+  line-height: 1.1;
+  font-weight: 700;
 }
 
 .content p {
-  font-size: 25px;
+  font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.6;
 }
 
 .divider {
-  width: 50px;
-  height: 2px;
+  width: 48px;
+  height: 3px;
   background-color: #4caf50;
-  margin: 10px 0;
+  border-radius: 2px;
 }
 
+/* ---------- Get Started button ---------- */
 .get-started-button {
-  padding: 15px 25px;
-  font-size: 23px;
+  align-self: flex-start;
+  padding: 14px 28px;
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  font-weight: 600;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   background-color: #4caf50;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 40px;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+  margin-top: 8px;
 }
 
 .get-started-button:hover {
   background-color: #45a049;
+  transform: translateY(-2px);
 }
 
-/* ProductList.css */
+/* ---------- Right column (About Us) ---------- */
+.aboutus_container {
+  display: none; /* hidden on mobile, shown on tablet+ */
+}
 
+/* ---------- Product list slide-in ---------- */
 .product-list-container {
-  position: absolute;
-  overflow-x: hidden;
+  position: fixed;
   top: 100vh;
-  /* Initially off-screen */
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.9);
-  /* Adjust background opacity as needed */
-  transition: top 0.5s ease;
-  /* Smooth transition for top property */
+  background-color: #f0f0f0;
+  transition: top 0.45s ease;
   overflow-y: auto;
-  /* Enable vertical scrolling */
-  z-index: 2;
-  /* Ensure it's above landing page content */
-  backdrop-filter: blur(5px);
+  overflow-x: hidden;
+  z-index: 10;
 }
 
 .product-list-container.visible {
   top: 0;
 }
-/* LandingPage.css */
-@media screen and (max-width: 768px) {
+
+/* ---------- Tablet (640px+) ---------- */
+@media (min-width: 640px) {
   .content {
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
+    padding: 0 48px;
   }
 
   .landing_content {
-    margin-top: 100px; /* Adjust as needed */
-    margin-left: 0;
-    width: 80%; /* Adjust as needed */
-    text-align: center;
-  }
-
-  .aboutus_container {
-    margin-top: 20px; /* Adjust as needed */
-    width: 80%; /* Adjust as needed */
+    gap: 20px;
   }
 }
 
-@media screen and (max-width: 480px) {
+/* ---------- Desktop (900px+) ---------- */
+@media (min-width: 900px) {
+  .content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    padding: 0 80px;
+  }
+
   .landing_content {
-    margin-top: 50px; /* Adjust as needed */
-    width: 90%; /* Adjust as needed */
+    max-width: 420px;
   }
 
   .aboutus_container {
-    width: 90%; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 460px;
+    color: white;
+  }
+
+  .aboutus_container h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .aboutus_container p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
   }
 }
